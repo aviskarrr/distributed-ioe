@@ -59,7 +59,6 @@ class RPCServer:
                 break
             # Showing request Type
             print(f'> {address} : {functionName}({args})')
-            
             try:
                 response = self._methods[functionName](*args, **kwargs)
             except Exception as e:
@@ -67,7 +66,6 @@ class RPCServer:
                 client.sendall(json.dumps(str(e)).encode())
             else:
                 client.sendall(json.dumps(response).encode())
-
 
         print(f'Completed request from {address}.')
         client.close()
